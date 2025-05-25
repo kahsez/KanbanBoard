@@ -1,0 +1,43 @@
+@startuml
+skin rose
+hide empty members
+hide circle
+skinparam SameClassWidth true
+'skinparam linetype ortho
+'https://plantuml.com/class-diagram
+/'
+class Work
+class WorkItem
+class Stage
+class Pull
+'/
+class Board
+{
+    BoardName
+}
+class Column
+{
+    ColumnName
+}
+class Card
+{
+    CardTitle
+    CardDescription
+}
+class User
+/'
+Board -up-|> Work
+Card -up-|>  WorkItem 
+Column -up-|>  Stage
+
+Work *-left- "1..*" Stage
+WorkItem -right-> Stage
+'/
+Board *-- "*" Column
+Column o-- "*" Card: Moves between <
+
+User --> Board : CRUD
+User --> Column : CRUD
+User --> Card : CRUD
+
+@enduml
