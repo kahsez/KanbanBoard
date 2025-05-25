@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+skin rose
+left to right direction
+skinparam PackageStyle rectangle
+
+actor User
+actor "Web User" as WebUser
+actor "Desktop User" as DesktopUser
+
+note top of DesktopUser 
+    Runs the program locally, 
+    no internet connection,
+    only one user per application
+end note
+
+DesktopUser --|> User
+WebUser ---|> User
+
+package Web {
+    (Register) as W1
+    (Login) as W2
+    (Logout) as W3
+    (Delete Account) as W4
+}
+
+package Board {
+    (Create Empty Board) as B5
+    (Create Default Board) as B6
+    (RUD Board) as B1
+    (CRUD Column) as B2
+    (CRUD Card) as B3
+    (Move Card Between Columns) as B4
+}
+
+WebUser --> W1
+WebUser --> W2
+WebUser --> W3
+WebUser --> W4
+
+User --> B1
+User --> B2
+User --> B3
+User --> B4
+User --> B5
+User --> B6
+
+@enduml
