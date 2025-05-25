@@ -1,17 +1,34 @@
+### WIP
 - Domain Model Diagram
 - UseCase Diagram
-- Architecture Diagram
 
+### Docs
+- Architecture Diagram
+- Readme
+
+### Features
+- App
+  - CRUD Cards
+  - CRUD Columns
+  - Create Empty Board
+  - Create Default Board
+  - RUD Board
+  - Move Cards between Boards
 
 - CI/CD with GitHub actions
+  - Run tests
+  - Sonarqube?
+  - Generate puml svgs on push? [Possible action](https://github.com/holowinski/plantuml-github-action)
 
+- Persistence
+  1. In-memory database
+  2. SQL Database (Using EFCore)
 
-- In-memory database
-- SQL Database (Using EFCore)
-
-
-- Console View
-- Web View
-
+- View
+  - Desktop View
+    - Console View? 
+    - Unity View? 
+    - WPF View?
+  - Web View
 
 - Authentication
