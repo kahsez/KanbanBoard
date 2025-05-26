@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanBoard.Backend.Api", "KanbanBoard.Backend.Api\KanbanBoard.Backend.Api.csproj", "{8A5AFFDB-B363-48A1-A326-C13C0EA37ECB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanBoard.Backend.Api", "src\Backend\KanbanBoard.Backend.Api\KanbanBoard.Backend.Api.csproj", "{BF52CC1A-E43A-4EAF-8D37-F9E203873259}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8A5AFFDB-B363-48A1-A326-C13C0EA37ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A5AFFDB-B363-48A1-A326-C13C0EA37ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A5AFFDB-B363-48A1-A326-C13C0EA37ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A5AFFDB-B363-48A1-A326-C13C0EA37ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF52CC1A-E43A-4EAF-8D37-F9E203873259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF52CC1A-E43A-4EAF-8D37-F9E203873259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF52CC1A-E43A-4EAF-8D37-F9E203873259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF52CC1A-E43A-4EAF-8D37-F9E203873259}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
