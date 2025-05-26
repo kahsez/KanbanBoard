@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanBoard.Backend.Api", "src\Backend\KanbanBoard.Backend.Api\KanbanBoard.Backend.Api.csproj", "{BF52CC1A-E43A-4EAF-8D37-F9E203873259}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanBoard.Backend.Tests", "tests\Backend.Tests\KanbanBoard.Backend.Tests\KanbanBoard.Backend.Tests.csproj", "{81565591-7047-4580-A725-C43E857B0C84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{BF52CC1A-E43A-4EAF-8D37-F9E203873259}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF52CC1A-E43A-4EAF-8D37-F9E203873259}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF52CC1A-E43A-4EAF-8D37-F9E203873259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81565591-7047-4580-A725-C43E857B0C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81565591-7047-4580-A725-C43E857B0C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81565591-7047-4580-A725-C43E857B0C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81565591-7047-4580-A725-C43E857B0C84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
