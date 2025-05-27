@@ -12,4 +12,10 @@ public class BoardsController : ControllerBase
     {
         return new List<Board>();
     }
+
+    [HttpPost]
+    public ActionResult<Board> Create([FromBody] string name)
+    {
+        return Created("", new Board(name));
+    }
 }

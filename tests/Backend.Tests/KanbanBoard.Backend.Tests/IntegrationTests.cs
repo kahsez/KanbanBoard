@@ -18,4 +18,18 @@ public class IntegrationTests
         var result = await response.Content.ReadAsAsync<IEnumerable<Board>>();
         result.Should().BeEmpty();
     }
+    
+    [Test]
+    public async Task PostBoard_ReturnsCreatedBoard()
+    {
+        var client = new WebApplicationFactory<Program>().CreateClient();
+        client.BaseAddress = new Uri("https://localhost");
+        var doc = "test";
+        
+        var response = await client.PostAsJsonAsync("user/boards", doc);
+        
+        response.EnsureSuccessStatusCode();
+        var result = await response.Content.ReadAsAsync<Board>();
+        result.Name.Should().Be("test");
+    }
 }
