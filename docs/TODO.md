@@ -1,6 +1,5 @@
 ### WIP
-- Domain Model Diagram
-- UseCase Diagram
+
 
 ### Docs
 - Architecture Diagram
@@ -16,9 +15,7 @@
   - Move Cards between Boards
 
 - CI/CD with GitHub actions
-  - Run tests
-  - Sonarqube?
-  - Generate puml svgs on push? [Possible action](https://github.com/holowinski/plantuml-github-action)
+  - Generate puml svgs on push? [Possible action](https://github.com/hokorobi/plantuml-github-action)
 
 - Persistence
   1. In-memory database
