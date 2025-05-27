@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\src\Backend\KanbanBoard.Backend.Api\KanbanBoard.Backend.Api.csproj" />
+      <ProjectReference Include="..\..\..\src\Backend\KanbanBoard.Backend.Domain\KanbanBoard.Backend.Domain.csproj" />
     </ItemGroup>
 
 </Project>

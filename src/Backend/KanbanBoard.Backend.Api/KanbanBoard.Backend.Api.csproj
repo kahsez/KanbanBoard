@@ -17,4 +17,8 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\KanbanBoard.Backend.Domain\KanbanBoard.Backend.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
