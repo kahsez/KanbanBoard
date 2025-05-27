@@ -1,5 +1,14 @@
 ### WIP
+- App
+  - Create Empty Board
+  - RUD Board
+- Persistence
+  1. In-memory database
 
+### Refactor
+- Extract test helpers / builders / utils
+- Move controllers logic to Application Layer
+- Input and output DTOs to abstract Domain Layer
 
 ### Docs
 - Architecture Diagram
@@ -9,17 +18,12 @@
 - App
   - CRUD Cards
   - CRUD Columns
-  - Create Empty Board
   - Create Default Board
-  - RUD Board
   - Move Cards between Boards
 
-- CI/CD with GitHub actions
-  - Generate puml svgs on push? [Possible action](https://github.com/hokorobi/plantuml-github-action)
-
 - Persistence
-  1. In-memory database
-  2. SQL Database (Using EFCore)
+  2. SQLite Database (Using EFCore)
+  3. External SQL Database (Using EFCore)
 
 - View
   - Desktop View
