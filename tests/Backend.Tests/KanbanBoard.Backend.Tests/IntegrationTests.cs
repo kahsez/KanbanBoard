@@ -1,5 +1,5 @@
 using FluentAssertions;
-using KanbanBoard.Backend.Api;
+using KanbanBoard.Backend.Domain;
 using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace KanbanBoard.Backend.Tests;

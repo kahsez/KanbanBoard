@@ -1,3 +1,4 @@
+using KanbanBoard.Backend.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KanbanBoard.Backend.Api.Controllers;

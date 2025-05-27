@@ -1,4 +1,4 @@
-namespace KanbanBoard.Backend.Api;
+namespace KanbanBoard.Backend.Domain;
 
 public class Board
 {
