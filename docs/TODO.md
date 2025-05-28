@@ -5,14 +5,20 @@
 - Persistence
   1. In-memory database
 
-### Refactor
-- Extract test helpers / builders / utils
-- Move controllers logic to Application Layer
 - Input and output DTOs to abstract Domain Layer
+- Change api url
+
+### Refactor
+- Move controllers logic to Application Layer
 
 ### Docs
 - Architecture Diagram
 - Readme
+  - Include diagrams
+  - REST
+  - Testing (integration, TDD)
+  - Architecture (names used)
+  - CI
 
 ### Features
 - App
@@ -31,5 +37,6 @@
     - Unity View? 
     - WPF View?
   - Web View
+    - Blazor?
 
 - Authentication
