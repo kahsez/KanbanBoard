@@ -9,25 +9,23 @@ public class IntegrationTests
     [Test]
     public async Task BoardsListIsEmptyByDefault()
     {
-        var client = CreateApiClient();
+        var sut = CreateApiClient();
 
-        var response = await client.GetAsync("user/boards");
+        var response = await sut.GetAsync("user/boards");
 
-        response.EnsureSuccessStatusCode();
-        var result = await response.Content.ReadAsAsync<IEnumerable<Board>>();
+        var result = await response.ReadContentAsyncAs<IEnumerable<Board>>();
         result.Should().BeEmpty();
     }
 
     [Test]
     public async Task PostBoard_ReturnsCreatedBoard()
     {
-        var client = CreateApiClient();
+        var sut = CreateApiClient();
         var doc = "test";
         
-        var response = await client.PostAsJsonAsync("user/boards", doc);
+        var response = await sut.PostAsJsonAsync("user/boards", doc);
         
-        response.EnsureSuccessStatusCode();
-        var result = await response.Content.ReadAsAsync<Board>();
+        var result = await response.ReadContentAsyncAs<Board>();
         result.Name.Should().Be("test");
     }
     
@@ -36,5 +34,14 @@ public class IntegrationTests
         var client = new WebApplicationFactory<Program>().CreateClient();
         client.BaseAddress = new Uri("https://localhost");
         return client;
+    }
+}
+
+public static class TestHelpers
+{
+    public static async Task<T> ReadContentAsyncAs<T>(this HttpResponseMessage response)
+    {
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadAsAsync<T>();
     }
 }
