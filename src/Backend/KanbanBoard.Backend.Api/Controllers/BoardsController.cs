@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace KanbanBoard.Backend.Api.Controllers;
 
 [ApiController]
-[Route("user/[controller]")]
+[Route("api/[controller]")]
 public class BoardsController : ControllerBase
 {
     [HttpGet]
