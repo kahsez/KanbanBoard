@@ -1,3 +1,4 @@
+using KanbanBoard.Backend.Application.UseCases;
 using KanbanBoard.Backend.Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -5,12 +6,12 @@ namespace KanbanBoard.Backend.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BoardsController : ControllerBase
+public class BoardsController(GetBoards getBoards) : ControllerBase
 {
     [HttpGet]
-    public IEnumerable<Board> Get()
+    public async Task<IEnumerable<Board>> Get()
     {
-        return new List<Board>();
+        return await getBoards.Empty();
     }
 
     [HttpPost]
