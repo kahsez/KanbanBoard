@@ -1,5 +1,4 @@
 using KanbanBoard.Backend.Application.Dtos;
-using KanbanBoard.Backend.Domain;
 
 namespace KanbanBoard.Backend.Application.UseCases;
 

@@ -1,6 +1,5 @@
 using FluentAssertions;
 using KanbanBoard.Backend.Application.Dtos;
-using KanbanBoard.Backend.Domain;
 
 namespace KanbanBoard.Backend.Tests;
 
@@ -15,7 +14,7 @@ public class IntegrationTests
 
         var response = await sut.GetAsync(BoardsUri);
 
-        var result = await response.ReadContentAsyncAs<IEnumerable<Board>>();
+        var result = await response.ReadContentAsyncAs<IEnumerable<BoardResponse>>();
         result.Should().BeEmpty();
     }
 

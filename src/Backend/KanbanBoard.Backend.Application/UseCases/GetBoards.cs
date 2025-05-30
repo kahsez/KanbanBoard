@@ -1,11 +1,11 @@
-﻿using KanbanBoard.Backend.Domain;
+﻿using KanbanBoard.Backend.Application.Dtos;
 
 namespace KanbanBoard.Backend.Application.UseCases;
 
 public class GetBoards
 {
-    public async Task<IEnumerable<Board>> Empty()
+    public async Task<IEnumerable<BoardResponse>> Empty()
     {
-        return new List<Board>();
+        return new List<BoardResponse>();
     }
 }
