@@ -5,8 +5,6 @@
 - Persistence
   1. In-memory database
 
-- Input and output DTOs to abstract Domain Layer
-
 ### Refactor
 
 
@@ -16,13 +14,18 @@
   - Include diagrams
   - REST
   - Testing (integration, TDD)
+    - test helpers = test api = test utils
   - Architecture (names used)
     - Use Cases = Use Case Interactors = Application Services 
     - Driven Ports = Secondary Ports = Use Case Output Ports
     - Request DTO = Input Data
     - Response DTO = Output Data
   - CI
-  - Decisions (number of controllers and use cases, no interface for driving ports)
+  - Conventional Commits
+  - Decisions 
+    - Number of controllers and use cases
+    - No interface for driving ports
+    - Creating a new client in each integration test
 
 ### Features
 - App
