@@ -1,11 +1,12 @@
+using KanbanBoard.Backend.Application.Dtos;
 using KanbanBoard.Backend.Domain;
 
 namespace KanbanBoard.Backend.Application.UseCases;
 
 public class CreateBoard
 {
-    public async Task<Board> EmptyWith(string name)
+    public async Task<BoardResponse> EmptyWith(CreateBoardRequest data)
     {
-        return new Board(name);
+        return new BoardResponse(1, data.Name);
     }
 }

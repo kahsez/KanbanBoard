@@ -1,4 +1,5 @@
 using FluentAssertions;
+using KanbanBoard.Backend.Application.Dtos;
 using KanbanBoard.Backend.Domain;
 
 namespace KanbanBoard.Backend.Tests;
@@ -22,11 +23,11 @@ public class IntegrationTests
     public async Task PostBoard_ReturnsCreatedBoard()
     {
         var sut = TestHelpers.CreateApiClient();
-        var doc = "test";
+        var doc = new CreateBoardRequest("test");
         
         var response = await sut.PostAsJsonAsync(BoardsUri, doc);
         
-        var result = await response.ReadContentAsyncAs<Board>();
+        var result = await response.ReadContentAsyncAs<BoardResponse>();
         result.Name.Should().Be("test");
     }
 }

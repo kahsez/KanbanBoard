@@ -1,3 +1,4 @@
+using KanbanBoard.Backend.Application.Dtos;
 using KanbanBoard.Backend.Application.UseCases;
 using KanbanBoard.Backend.Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +16,9 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard) : Co
     }
 
     [HttpPost]
-    public async Task<ActionResult<Board>> Create([FromBody] string name)
+    public async Task<ActionResult<Board>> Create(CreateBoardRequest data)
     {
-        var board = await createBoard.EmptyWith(name);
+        var board = await createBoard.EmptyWith(data);
         return Created("", board);
     }
 }
