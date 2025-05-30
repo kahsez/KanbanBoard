@@ -6,10 +6,9 @@
   1. In-memory database
 
 - Input and output DTOs to abstract Domain Layer
-- Change api url
 
 ### Refactor
-- Move controllers logic to Application Layer
+
 
 ### Docs
 - Architecture Diagram
@@ -18,7 +17,12 @@
   - REST
   - Testing (integration, TDD)
   - Architecture (names used)
+    - Use Cases = Use Case Interactors = Application Services 
+    - Driven Ports = Secondary Ports = Use Case Output Ports
+    - Request DTO = Input Data
+    - Response DTO = Output Data
   - CI
+  - Decisions (number of controllers and use cases, no interface for driving ports)
 
 ### Features
 - App
