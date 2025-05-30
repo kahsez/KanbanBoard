@@ -10,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<GetBoards>();
+builder.Services.AddScoped<CreateBoard>();
 
 var app = builder.Build();
 

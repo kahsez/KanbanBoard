@@ -6,7 +6,7 @@ namespace KanbanBoard.Backend.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BoardsController(GetBoards getBoards) : ControllerBase
+public class BoardsController(GetBoards getBoards, CreateBoard createBoard) : ControllerBase
 {
     [HttpGet]
     public async Task<IEnumerable<Board>> Get()
@@ -15,8 +15,9 @@ public class BoardsController(GetBoards getBoards) : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Board> Create([FromBody] string name)
+    public async Task<ActionResult<Board>> Create([FromBody] string name)
     {
-        return Created("", new Board(name));
+        var board = await createBoard.EmptyWith(name);
+        return Created("", board);
     }
 }
