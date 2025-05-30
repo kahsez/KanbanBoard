@@ -1,3 +1,6 @@
+[![Build and Test](https://github.com/kahsez/KanbanBoard/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/kahsez/KanbanBoard/actions/workflows/build-and-test.yml)
+[![CodeQL Advanced](https://github.com/kahsez/KanbanBoard/actions/workflows/codeql.yml/badge.svg)](https://github.com/kahsez/KanbanBoard/actions/workflows/codeql.yml)
+
 A simple kanban board
 
 ### Things to keep in mind
