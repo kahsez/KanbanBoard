@@ -7,15 +7,15 @@ public class BoardsRepository : IBoardsRepository
 {
     private static readonly List<Board> Boards = [];
 
-    public async Task<Board> Create(Board board)
+    public Task<Board> Create(Board board)
     {
         Boards.Add(board);
         
-        return board;
+        return Task.FromResult(board);
     }
 
-    public async Task<IEnumerable<Board>> GetAll()
+    public Task<IEnumerable<Board>> GetAll()
     {
-        return Boards;
+        return Task.FromResult<IEnumerable<Board>>(Boards);
     }
 }
