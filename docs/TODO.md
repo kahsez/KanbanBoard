@@ -1,17 +1,17 @@
 ### WIP
 - App
-  - Create Empty Board
   - RUD Board
-- Persistence
-  1. In-memory database
+- Add IDs to boards
+  
+### Test
+- Two posted boards have different IDs
 
 ### Refactor
-
+- Move DI add services from program to somewhere else
 
 ### Docs
 - Architecture Diagram
 - Readme
-  - Include diagrams
   - REST
   - Testing (integration, TDD)
     - test helpers = test api = test utils
@@ -26,6 +26,7 @@
     - Number of controllers and use cases
     - No interface for driving ports
     - Creating a new client in each integration test
+    - Why not using DTOs to communicate with repositories
 
 ### Features
 - App
@@ -35,10 +36,12 @@
   - Move Cards between Boards
 
 - Persistence
-  2. SQLite Database (Using EFCore)
-  3. External SQL Database (Using EFCore)
+  - [x] In-memory database
+  - [ ] SQLite Database (Using EFCore)
+  - [ ] External SQL Database (Using EFCore)
 
 - View
+  - OpenAPI generator
   - Desktop View
     - Console View? 
     - Unity View? 
