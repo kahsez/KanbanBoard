@@ -1,19 +1,20 @@
+using KanbanBoard.Backend.Application.DrivenPorts;
 using KanbanBoard.Backend.Domain;
 
 namespace KanbanBoard.Backend.Application;
 
-public static class BoardsRepository
+public class BoardsRepository : IBoardsRepository
 {
     private static readonly List<Board> Boards = [];
 
-    public static async Task<Board> Create(Board board)
+    public async Task<Board> Create(Board board)
     {
         Boards.Add(board);
         
         return board;
     }
 
-    public static async Task<IEnumerable<Board>> GetAll()
+    public async Task<IEnumerable<Board>> GetAll()
     {
         return Boards;
     }

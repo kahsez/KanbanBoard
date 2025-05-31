@@ -1,13 +1,14 @@
-﻿using KanbanBoard.Backend.Application.Dtos;
+﻿using KanbanBoard.Backend.Application.DrivenPorts;
+using KanbanBoard.Backend.Application.Dtos;
 
 namespace KanbanBoard.Backend.Application.UseCases;
 
-public class GetBoards
+public class GetBoards(IBoardsRepository boards)
 {
     public async Task<IEnumerable<BoardResponse>> Empty()
     {
-        var boards = await BoardsRepository.GetAll();
+        var allBoards = await boards.GetAll();
 
-        return boards.Select(board => new BoardResponse(1, board.Name)).ToList();
+        return allBoards.Select(board => new BoardResponse(1, board.Name)).ToList();
     }
 }

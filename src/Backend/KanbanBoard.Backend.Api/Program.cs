@@ -1,3 +1,5 @@
+using KanbanBoard.Backend.Application;
+using KanbanBoard.Backend.Application.DrivenPorts;
 using KanbanBoard.Backend.Application.UseCases;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<GetBoards>();
 builder.Services.AddScoped<CreateBoard>();
+builder.Services.AddSingleton<IBoardsRepository, BoardsRepository>();
 
 var app = builder.Build();
 
