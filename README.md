@@ -13,3 +13,11 @@ implement in the future
 (Web API, persistence) so I'm following a TDD approach doing only integration tests.
 - Instead of coding the domain logic first, I'm doing a vertical slice (from API to persistence) with a simple 
 entity CRUD. I'll add the rest of the features later.
+
+### Domain Model
+
+![Domain model](docs/Diagrams/DomainModel.svg)
+
+### Use Cases
+
+![Use Cases](docs/Diagrams/UseCases.svg)
