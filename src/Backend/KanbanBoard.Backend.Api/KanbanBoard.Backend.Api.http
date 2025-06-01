@@ -1,6 +1,12 @@
-@KanbanBoard.Backend.Api_HostAddress = http://localhost:5092
+@KanbanBoardBackendApi_HostAddress = http://localhost:5092
 
-GET {{KanbanBoard.Backend.Api_HostAddress}}/weatherforecast/
+GET {{KanbanBoardBackendApi_HostAddress}}/api/Boards/
 Accept: application/json
 
 ###
+POST {{KanbanBoardBackendApi_HostAddress}}/api/Boards/
+Content-Type: application/json
+
+{
+  "name": "test"
+}
