@@ -16,4 +16,12 @@ public static class TestHelpers
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadAsAsync<T>();
     }
+    
+    public static async Task<TContentType> PostAndReadResponseContent<TRequestType, TContentType>
+        (this HttpClient client, TRequestType request, string requestUri)
+    {
+        var postResponse = await client.PostAsJsonAsync(requestUri, request);
+        var result = await postResponse.ReadContentAsyncAs<TContentType>();
+        return result;
+    }
 }

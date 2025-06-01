@@ -24,9 +24,8 @@ public class IntegrationTests
         var sut = TestHelpers.CreateApiClient();
         var doc = new CreateBoardRequest("test");
         
-        var response = await sut.PostAsJsonAsync(BoardsUri, doc);
-        
-        var result = await response.ReadContentAsyncAs<BoardResponse>();
+        var result = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(doc, BoardsUri);
+
         result.Name.Should().Be("test");
     }
 
@@ -35,8 +34,7 @@ public class IntegrationTests
     {
         var sut = TestHelpers.CreateApiClient();
         var createBoardRequest = new CreateBoardRequest("test");
-        var createBoardResponse = await sut.PostAsJsonAsync(BoardsUri, createBoardRequest);
-        var existingBoard = await createBoardResponse.ReadContentAsyncAs<BoardResponse>();
+        var existingBoard = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(createBoardRequest, BoardsUri);
 
         var response = await sut.GetAsync(BoardsUri);
 
@@ -50,11 +48,8 @@ public class IntegrationTests
         var sut = TestHelpers.CreateApiClient();
         var doc = new CreateBoardRequest("test");
         
-        var firstResponse = await sut.PostAsJsonAsync(BoardsUri, doc);
-        var secondResponse = await sut.PostAsJsonAsync(BoardsUri, doc);
-        
-        var firstBoard = await firstResponse.ReadContentAsyncAs<BoardResponse>();
-        var secondBoard = await secondResponse.ReadContentAsyncAs<BoardResponse>();
+        var firstBoard = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(doc, BoardsUri);
+        var secondBoard = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(doc, BoardsUri);
 
         firstBoard.Id.Should().NotBe(secondBoard.Id);
     }
