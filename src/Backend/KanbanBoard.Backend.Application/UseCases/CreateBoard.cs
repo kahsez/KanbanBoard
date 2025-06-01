@@ -11,6 +11,6 @@ public class CreateBoard(IBoardsRepository boards)
         var board = new Board(data.Name);
 
         var newBoard = await boards.Create(board);
-        return new BoardResponse(1, newBoard.Name);
+        return new BoardResponse(newBoard.Id, newBoard.Name);
     }
 }

@@ -6,9 +6,13 @@ namespace KanbanBoard.Backend.Infrastructure.Persistence.InMemory;
 public class BoardsInMemoryRepository : IBoardsRepository
 {
     private readonly List<Board> boards = [];
-
+    private int nextId;
+    
     public Task<Board> Create(Board board)
     {
+        board.Id = nextId;
+        nextId++;
+        
         boards.Add(board);
         
         return Task.FromResult(board);

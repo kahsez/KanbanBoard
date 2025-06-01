@@ -43,4 +43,19 @@ public class IntegrationTests
         var result = await response.ReadContentAsyncAs<IEnumerable<BoardResponse>>();
         result.Should().HaveCount(1).And.Contain(board => board.Name == existingBoard.Name);
     }
+
+    [Test]
+    public async Task PostTwoTimes_ReturnsBoardsWithDifferentIDs()
+    {
+        var sut = TestHelpers.CreateApiClient();
+        var doc = new CreateBoardRequest("test");
+        
+        var firstResponse = await sut.PostAsJsonAsync(BoardsUri, doc);
+        var secondResponse = await sut.PostAsJsonAsync(BoardsUri, doc);
+        
+        var firstBoard = await firstResponse.ReadContentAsyncAs<BoardResponse>();
+        var secondBoard = await secondResponse.ReadContentAsyncAs<BoardResponse>();
+
+        firstBoard.Id.Should().NotBe(secondBoard.Id);
+    }
 }
