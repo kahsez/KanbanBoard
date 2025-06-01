@@ -12,9 +12,8 @@ public class IntegrationTests
     {
         var sut = TestHelpers.CreateApiClient();
 
-        var response = await sut.GetAsync(BoardsUri);
-
-        var result = await response.ReadContentAsyncAs<IEnumerable<BoardResponse>>();
+        var result = await sut.GetAndReadResponseContent<BoardResponse>(BoardsUri);
+        
         result.Should().BeEmpty();
     }
 
@@ -35,10 +34,9 @@ public class IntegrationTests
         var sut = TestHelpers.CreateApiClient();
         var createBoardRequest = new CreateBoardRequest("test");
         var existingBoard = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(createBoardRequest, BoardsUri);
-
-        var response = await sut.GetAsync(BoardsUri);
-
-        var result = await response.ReadContentAsyncAs<IEnumerable<BoardResponse>>();
+        
+        var result = await sut.GetAndReadResponseContent<BoardResponse>(BoardsUri);
+ 
         result.Should().HaveCount(1).And.Contain(board => board.Name == existingBoard.Name);
     }
 

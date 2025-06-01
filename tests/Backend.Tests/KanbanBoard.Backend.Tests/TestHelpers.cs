@@ -17,6 +17,14 @@ public static class TestHelpers
         return await response.Content.ReadAsAsync<T>();
     }
     
+    public static async Task<IEnumerable<TContentType>> GetAndReadResponseContent<TContentType>
+        (this HttpClient client, string requestUri)
+    {
+        var response = await client.GetAsync(requestUri);
+        var result = await response.ReadContentAsyncAs<IEnumerable<TContentType>>();
+        return result;
+    }
+    
     public static async Task<TContentType> PostAndReadResponseContent<TRequestType, TContentType>
         (this HttpClient client, TRequestType request, string requestUri)
     {
