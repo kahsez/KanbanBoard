@@ -1,18 +1,17 @@
 ### WIP
-- App
-  - RUD Board
-- Add IDs to boards
+- Persistence
+  - SQLite Database (Using EFCore)
   
 ### Test
-- Two posted boards have different IDs
 
 ### Refactor
 - Move DI add services from program to somewhere else
+- Move Id generation to application layer?
 
 ### Docs
-- Architecture Diagram
 - Readme
   - REST
+  - Persistence (Multiple implementations)
   - Testing (integration, TDD)
     - test helpers = test api = test utils
   - Architecture (names used)
@@ -29,17 +28,7 @@
     - Why not using DTOs to communicate with repositories
 
 ### Features
-- App
-  - CRUD Cards
-  - CRUD Columns
-  - Create Default Board
-  - Move Cards between Boards
-
-- Persistence
-  - [x] In-memory database
-  - [ ] SQLite Database (Using EFCore)
-  - [ ] External SQL Database (Using EFCore)
-
+- Deploy
 - View
   - OpenAPI generator
   - Desktop View
@@ -50,3 +39,14 @@
     - Blazor?
 
 - Authentication
+- Persistence
+  - [x] In-memory database
+  - [ ] External SQL Database (Using EFCore)
+
+- App
+  - RUD Board
+  - CRUD Cards
+  - CRUD Columns
+  - Create Default Board
+  - Move Cards between Boards
+
