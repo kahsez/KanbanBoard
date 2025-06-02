@@ -5,7 +5,7 @@ namespace KanbanBoard.Backend.Application.UseCases;
 
 public class GetBoards(IBoardsRepository boards)
 {
-    public async Task<IEnumerable<BoardResponse>> Empty()
+    public async Task<IEnumerable<BoardResponse>> All()
     {
         var allBoards = await boards.GetAll();
 

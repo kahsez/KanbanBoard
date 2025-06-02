@@ -11,7 +11,7 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard) : Co
     [HttpGet]
     public async Task<IEnumerable<BoardResponse>> Get()
     {
-        return await getBoards.Empty();
+        return await getBoards.All();
     }
 
     [HttpPost]
