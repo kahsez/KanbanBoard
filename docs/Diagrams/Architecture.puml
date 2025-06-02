@@ -1,0 +1,56 @@
+@startuml
+'https://plantuml.com/deployment-diagram
+skin rose
+
+package "Domain" {
+    [Entities]
+}
+
+package "Application" {
+    interface DrivenPorts
+    [Use Cases]
+    [DTOs]
+}
+
+rectangle "Infrastructure" {
+    package "Persistence.InMemory" {
+        [Repositories]
+    }
+}
+
+rectangle "Interface Adapters" {
+    package "API" {
+        [Controllers]
+        [Program]
+    }
+}
+
+package "Tests" {
+    [Integration Tests]
+}
+
+' Application depends on Domain
+[Use Cases] ..> [Entities] : use
+
+' API calls into Application Use Cases
+[Controllers] --> [Use Cases] : call
+[Controllers] ..> [DTOs] : send and receive
+
+' Persistence implements abstractions defined in Domain/Application
+[Repositories] ..> [Entities] : use
+[Repositories] ..|> DrivenPorts : implement
+
+' The Program (in API) wires up dependencies.
+'[Program] --> [DrivenPorts]
+'[Program] --> [Repositories]
+'[Program] --> [Controllers]
+
+' Integration tests interact with the entry point (API) to verify end-to-end flows
+[Integration Tests] --> [Program] : exercise
+[Integration Tests] ..> [Controllers] : simulate API calls
+[Integration Tests] ..> [DTOs] : verify
+
+@enduml
+
+
+

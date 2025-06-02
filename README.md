@@ -21,3 +21,6 @@ entity CRUD. I'll add the rest of the features later.
 ### Use Cases
 
 ![Use Cases](docs/Diagrams/UseCases.svg)
+
+### Architecture
+![Architecture](docs/Diagrams/Architecture.svg)
