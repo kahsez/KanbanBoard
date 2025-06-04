@@ -1,9 +1,9 @@
 using FluentAssertions;
 using KanbanBoard.Backend.Application.Dtos;
 
-namespace KanbanBoard.Backend.Tests;
+namespace KanbanBoard.Backend.Tests.Integration;
 
-public class IntegrationTests
+public class BoardsTests
 {
     private const string BoardsUri = "api/boards";
 
