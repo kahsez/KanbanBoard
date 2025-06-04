@@ -22,4 +22,9 @@ public class BoardsInMemoryRepository : IBoardsRepository
     {
         return Task.FromResult<IEnumerable<Board>>(boards);
     }
+
+    public Task<Board?> GetById(int id)
+    {
+        return Task.FromResult(boards.Find(b => b.Id == id));
+    }
 }

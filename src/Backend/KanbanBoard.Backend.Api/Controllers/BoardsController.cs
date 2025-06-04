@@ -13,6 +13,12 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard) : Co
     {
         return await getBoards.All();
     }
+    
+    [HttpGet("{id:int}")]
+    public async Task<BoardResponse> GetById(int id)
+    {
+        return await getBoards.By(id);
+    }
 
     [HttpPost]
     public async Task<ActionResult<BoardResponse>> Create(CreateBoardRequest data)

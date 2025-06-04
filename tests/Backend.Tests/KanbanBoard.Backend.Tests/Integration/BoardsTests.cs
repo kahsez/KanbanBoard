@@ -51,4 +51,19 @@ public class BoardsTests
 
         firstBoard.Id.Should().NotBe(secondBoard.Id);
     }
+    
+    [Test]
+    public async Task GetBoardById_ReturnsBoardWithCorrectId_WhenBoardExists()
+    {
+        var sut = TestHelpers.CreateApiClient();
+        var anyBoard = new CreateBoardRequest("test");
+        var firstPost = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(anyBoard, BoardsUri);
+        var secondPost = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(anyBoard, BoardsUri);
+
+        var firstGet = await sut.GetAndReadResponseContent<BoardResponse>($"{BoardsUri}/{firstPost.Id}");
+        var secondGet = await sut.GetAndReadResponseContent<BoardResponse>($"{BoardsUri}/{secondPost.Id}");
+
+        firstGet.Id.Should().Be(firstPost.Id);
+        secondGet.Id.Should().Be(secondPost.Id);
+    }
 }

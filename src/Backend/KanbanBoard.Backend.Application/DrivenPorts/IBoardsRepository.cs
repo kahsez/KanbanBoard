@@ -5,6 +5,6 @@ namespace KanbanBoard.Backend.Application.DrivenPorts;
 public interface IBoardsRepository
 {
     Task<Board> Create(Board board);
-
     Task<IEnumerable<Board>> GetAll();
+    Task<Board?> GetById(int id);
 }
