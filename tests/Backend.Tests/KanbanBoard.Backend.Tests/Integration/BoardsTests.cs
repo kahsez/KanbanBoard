@@ -12,7 +12,7 @@ public class BoardsTests
     {
         var sut = TestHelpers.CreateApiClient();
 
-        var result = await sut.GetAndReadResponseContent<BoardResponse>(BoardsUri);
+        var result = await sut.GetAndReadResponseContent<IEnumerable<BoardResponse>>(BoardsUri);
         
         result.Should().BeEmpty();
     }
@@ -35,7 +35,7 @@ public class BoardsTests
         var createBoardRequest = new CreateBoardRequest("test");
         var existingBoard = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(createBoardRequest, BoardsUri);
         
-        var result = await sut.GetAndReadResponseContent<BoardResponse>(BoardsUri);
+        var result = await sut.GetAndReadResponseContent<IEnumerable<BoardResponse>>(BoardsUri);
  
         result.Should().HaveCount(1).And.Contain(board => board.Name == existingBoard.Name);
     }
