@@ -32,6 +32,6 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard) : Co
     public async Task<ActionResult<BoardResponse>> Create(CreateBoardRequest data)
     {
         var board = await createBoard.EmptyWith(data);
-        return Created(Request.Path, board);
+        return CreatedAtAction(nameof(GetById), new {id = board.Id}, board);
     }
 }

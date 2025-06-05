@@ -6,7 +6,7 @@ namespace KanbanBoard.Backend.Tests.Integration;
 
 public class BoardsTests
 {
-    private const string BoardsUri = "api/boards";
+    private const string BoardsUri = "api/Boards";
 
     [Test]
     public async Task BoardsListIsEmptyByDefault()
@@ -24,8 +24,11 @@ public class BoardsTests
         var sut = TestHelpers.CreateApiClient();
         var doc = new CreateBoardRequest("test");
         
-        var result = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(doc, BoardsUri);
+        var postResponse = await sut.PostAsJsonAsync(BoardsUri, doc);
+        var result = await postResponse.ReadContentAsyncAs<BoardResponse>();
 
+        postResponse.Headers.Location.Should().NotBeNull();
+        postResponse.Headers.Location.LocalPath.Should().Be($"/{BoardsUri}/{result.Id}");
         result.Name.Should().Be("test");
     }
 
