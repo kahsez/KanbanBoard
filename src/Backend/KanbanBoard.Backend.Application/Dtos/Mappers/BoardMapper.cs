@@ -8,4 +8,9 @@ internal static class BoardMapper
     {
         return new BoardResponse(board.Id, board.Name);
     }
+    
+    public static Board ToBoardModel(this CreateBoardRequest data)
+    {
+        return new Board(data.Name);
+    }
 }

@@ -1,7 +1,6 @@
 using KanbanBoard.Backend.Application.DrivenPorts;
 using KanbanBoard.Backend.Application.Dtos;
 using KanbanBoard.Backend.Application.Dtos.Mappers;
-using KanbanBoard.Backend.Domain;
 
 namespace KanbanBoard.Backend.Application.UseCases;
 
@@ -9,9 +8,9 @@ public class CreateBoard(IBoardsRepository boards)
 {
     public async Task<BoardResponse> EmptyWith(CreateBoardRequest data)
     {
-        var board = new Board(data.Name);
+        var boardModel = data.ToBoardModel();
 
-        var newBoard = await boards.Create(board);
+        var newBoard = await boards.Create(boardModel);
         return newBoard.ToBoardResponse();
     }
 }
