@@ -15,6 +15,8 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard) : Co
     }
     
     [HttpGet("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<BoardResponse>> GetById(int id)
     {
         var board = await getBoards.By(id);
@@ -26,6 +28,7 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard) : Co
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<ActionResult<BoardResponse>> Create(CreateBoardRequest data)
     {
         var board = await createBoard.EmptyWith(data);
