@@ -6,7 +6,7 @@ namespace KanbanBoard.Backend.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BoardsController(GetBoards getBoards, CreateBoard createBoard) : ControllerBase
+public class BoardsController(GetBoards getBoards, CreateBoard createBoard, DeleteBoard deleteBoard) : ControllerBase
 {
     [HttpGet]
     public async Task<IEnumerable<BoardResponse>> Get()
@@ -33,5 +33,13 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard) : Co
     {
         var board = await createBoard.EmptyWith(data);
         return CreatedAtAction(nameof(GetById), new {id = board.Id}, board);
+    }
+
+    [HttpDelete("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<ActionResult> Delete(int id)
+    {
+        await deleteBoard.With(id);
+        return new NoContentResult();
     }
 }

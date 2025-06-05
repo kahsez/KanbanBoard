@@ -81,4 +81,18 @@ public class BoardsTests
 
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
+
+    [Test]
+    public async Task Delete_WhenBoardExists_RemovesBoard()
+    {
+        var sut = TestHelpers.CreateApiClient();
+        var anyBoard = new CreateBoardRequest("test");
+        var doc = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(anyBoard, BoardsUri);
+
+        var response = await sut.DeleteAsync($"{BoardsUri}/{doc.Id}");
+
+        var boards = await sut.GetAndReadResponseContent<IEnumerable<BoardResponse>>(BoardsUri);
+        response.EnsureSuccessStatusCode();
+        boards.Should().BeEmpty();
+    }
 }

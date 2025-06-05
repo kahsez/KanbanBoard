@@ -27,4 +27,9 @@ public class BoardsInMemoryRepository : IBoardsRepository
     {
         return Task.FromResult(boards.Find(b => b.Id == id));
     }
+
+    public Task<int> Delete(int id)
+    {
+        return Task.FromResult(boards.RemoveAll(b => b.Id == id));
+    }
 }
