@@ -1,10 +1,13 @@
 ### WIP
+- App
+  - UD Board
 - Persistence
   - SQLite Database (Using EFCore)
   
 ### Test
 
 ### Refactor
+- ToDTO extension methods
 - Move DI add services from program to somewhere else
 - Move Id generation to application layer?
 
@@ -44,7 +47,6 @@
   - [ ] External SQL Database (Using EFCore)
 
 - App
-  - RUD Board
   - CRUD Cards
   - CRUD Columns
   - Create Default Board
