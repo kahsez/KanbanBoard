@@ -12,9 +12,9 @@ public class GetBoards(IBoardsRepository boards)
         return allBoards.Select(board => new BoardResponse(board.Id, board.Name)).ToList();
     }
 
-    public async Task<BoardResponse> By(int id)
+    public async Task<BoardResponse?> By(int id)
     {
         var board = await boards.GetById(id);
-        return new BoardResponse(board.Id, board.Name);
+        return board != null ? new BoardResponse(board.Id, board.Name) : null;
     }
 }

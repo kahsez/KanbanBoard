@@ -15,9 +15,14 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard) : Co
     }
     
     [HttpGet("{id:int}")]
-    public async Task<BoardResponse> GetById(int id)
+    public async Task<ActionResult<BoardResponse>> GetById(int id)
     {
-        return await getBoards.By(id);
+        var board = await getBoards.By(id);
+        
+        if (board == null)
+            return NotFound();
+        
+        return board;
     }
 
     [HttpPost]

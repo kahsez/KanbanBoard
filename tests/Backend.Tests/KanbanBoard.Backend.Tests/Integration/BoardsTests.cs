@@ -1,3 +1,4 @@
+using System.Net;
 using FluentAssertions;
 using KanbanBoard.Backend.Application.Dtos;
 
@@ -65,5 +66,16 @@ public class BoardsTests
 
         firstGet.Id.Should().Be(firstPost.Id);
         secondGet.Id.Should().Be(secondPost.Id);
+    }
+    
+    [Test]
+    public async Task GetBoardById_ReturnsNotFound_WhenBoardDoesNotExist()
+    {
+        var sut = TestHelpers.CreateApiClient();
+
+        const int nonExistingId = 99999;
+        var response = await sut.GetAsync($"{BoardsUri}/{nonExistingId}");
+
+        response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
 }
