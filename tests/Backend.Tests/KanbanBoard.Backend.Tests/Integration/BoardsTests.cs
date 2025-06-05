@@ -95,4 +95,15 @@ public class BoardsTests
         response.EnsureSuccessStatusCode();
         boards.Should().BeEmpty();
     }
+    
+    [Test]
+    public async Task Delete_WhenBoardDoesNotExist_ReturnsNotFound()
+    {
+        var sut = TestHelpers.CreateApiClient();
+
+        const int nonExistingId = 99999;
+        var response = await sut.DeleteAsync($"{BoardsUri}/{nonExistingId}");
+
+        response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+    }
 }

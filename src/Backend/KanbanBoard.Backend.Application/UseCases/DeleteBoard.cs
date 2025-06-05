@@ -4,8 +4,8 @@ namespace KanbanBoard.Backend.Application.UseCases;
 
 public class DeleteBoard(IBoardsRepository boards)
 {
-    public async Task With(int id)
+    public async Task<int> With(int id)
     {
-        await boards.Delete(id);
+        return await boards.Delete(id);
     }
 }

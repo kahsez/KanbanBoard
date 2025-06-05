@@ -37,9 +37,14 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard, Dele
 
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id)
     {
-        await deleteBoard.With(id);
+        var deletedBoards = await deleteBoard.With(id);
+
+        if (deletedBoards == 0)
+            return NotFound();
+        
         return new NoContentResult();
     }
 }
