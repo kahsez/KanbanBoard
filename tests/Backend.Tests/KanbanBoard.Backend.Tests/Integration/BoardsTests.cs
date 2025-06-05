@@ -54,7 +54,7 @@ public class BoardsTests
     }
     
     [Test]
-    public async Task GetBoardById_ReturnsBoardWithCorrectId_WhenBoardExists()
+    public async Task GetBoardById_WhenBoardExists_ReturnsBoardWithCorrectId()
     {
         var sut = TestHelpers.CreateApiClient();
         var anyBoard = new CreateBoardRequest("test");
@@ -69,7 +69,7 @@ public class BoardsTests
     }
     
     [Test]
-    public async Task GetBoardById_ReturnsNotFound_WhenBoardDoesNotExist()
+    public async Task GetBoardById_WhenBoardDoesNotExist_ReturnsNotFound()
     {
         var sut = TestHelpers.CreateApiClient();
 
