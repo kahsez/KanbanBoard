@@ -1,13 +1,14 @@
 ### WIP
 - App
-  - UD Board
+  - Update Board
 - Persistence
   - SQLite Database (Using EFCore)
   
 ### Test
+- Test Data Builder for client?
+- Separate boards tests in multiple classes?
 
 ### Refactor
-- ToDTO extension methods
 - Move DI add services from program to somewhere else
 - Move Id generation to application layer?
 
