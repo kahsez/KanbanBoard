@@ -1,5 +1,6 @@
 ﻿using KanbanBoard.Backend.Application.DrivenPorts;
 using KanbanBoard.Backend.Application.Dtos;
+using KanbanBoard.Backend.Application.Dtos.Mappers;
 
 namespace KanbanBoard.Backend.Application.UseCases;
 
@@ -9,12 +10,12 @@ public class GetBoards(IBoardsRepository boards)
     {
         var allBoards = await boards.GetAll();
 
-        return allBoards.Select(board => new BoardResponse(board.Id, board.Name)).ToList();
+        return allBoards.Select(board => board.ToBoardResponse()).ToList();
     }
 
     public async Task<BoardResponse?> By(int id)
     {
         var board = await boards.GetById(id);
-        return board != null ? new BoardResponse(board.Id, board.Name) : null;
+        return board?.ToBoardResponse();
     }
 }
