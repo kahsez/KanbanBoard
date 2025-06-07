@@ -117,4 +117,20 @@ public class BoardsTests
         
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
+    
+    [Test]
+    public async Task PutBoard_WhenBoardExists_ReturnsUpdatedBoard()
+    {
+        var sut = TestHelpers.CreateApiClient();
+        var anyBoard = new CreateBoardRequest("oldName");
+        var postedBoard = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(anyBoard, BoardsUri);
+
+        var updateBoardRequest = new UpdateBoardRequest("newName");
+        var response = await sut.PutAsJsonAsync($"{BoardsUri}/{postedBoard.Id}", updateBoardRequest);
+        
+        response.EnsureSuccessStatusCode();
+        var updatedBoard = await response.ReadContentAsyncAs<BoardResponse>();
+        updatedBoard.Id.Should().Be(postedBoard.Id);
+        updatedBoard.Name.Should().Be("newName");
+    }
 }

@@ -51,13 +51,15 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard, Dele
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Update(int id)
+    public async Task<ActionResult<BoardResponse>> Update(int id, UpdateBoardRequest data)
     {
         var board = await getBoards.By(id);
         
         if (board == null)
             return NotFound();
+
+        var updatedBoard = new BoardResponse(id, data.Name);
         
-        return new OkResult();
+        return updatedBoard;
     }
 }
