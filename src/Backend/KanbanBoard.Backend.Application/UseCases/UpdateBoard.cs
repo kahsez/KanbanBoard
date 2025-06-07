@@ -11,7 +11,9 @@ public class UpdateBoard(IBoardsRepository boards)
         
         if (existingBoard == null)
             return null;
+
+        existingBoard.Name = data.Name;
         
-        return new BoardResponse(id, data.Name);
+        return new BoardResponse(id, existingBoard.Name);
     }
 }

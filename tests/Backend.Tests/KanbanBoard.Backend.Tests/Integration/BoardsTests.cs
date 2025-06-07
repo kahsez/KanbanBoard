@@ -133,4 +133,19 @@ public class BoardsTests
         updatedBoard.Id.Should().Be(postedBoard.Id);
         updatedBoard.Name.Should().Be("newName");
     }
+    
+    [Test]
+    public async Task PutBoardPersistsUpdatedBoard()
+    {
+        var sut = TestHelpers.CreateApiClient();
+        var createAnyBoard = new CreateBoardRequest("oldName");
+        var postedBoard = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(createAnyBoard, BoardsUri);
+
+        var updateBoardRequest = new UpdateBoardRequest("newName");
+        await sut.PutAsJsonAsync($"{BoardsUri}/{postedBoard.Id}", updateBoardRequest);
+
+        var result = await sut.GetAndReadResponseContent<BoardResponse>($"{BoardsUri}/{postedBoard.Id}");
+        result.Id.Should().Be(postedBoard.Id);
+        result.Name.Should().Be("newName");
+    }
 }
