@@ -106,4 +106,15 @@ public class BoardsTests
 
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
+    
+    [Test]
+    public async Task PutBoard_WhenBoardDoesNotExist_ReturnsNotFound()
+    {
+        var sut = TestHelpers.CreateApiClient();
+        
+        const int nonExistingId = 99999;
+        var response = await sut.PutAsJsonAsync($"{BoardsUri}/{nonExistingId}", new {Name = "newName"});
+        
+        response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+    }
 }

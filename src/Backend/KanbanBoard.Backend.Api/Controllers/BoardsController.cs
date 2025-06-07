@@ -47,4 +47,17 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard, Dele
         
         return new NoContentResult();
     }
+    
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> Update(int id)
+    {
+        var board = await getBoards.By(id);
+        
+        if (board == null)
+            return NotFound();
+        
+        return new OkResult();
+    }
 }
