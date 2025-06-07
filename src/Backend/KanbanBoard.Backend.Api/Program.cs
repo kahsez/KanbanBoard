@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<GetBoards>();
 builder.Services.AddScoped<CreateBoard>();
 builder.Services.AddScoped<DeleteBoard>();
+builder.Services.AddScoped<UpdateBoard>();
 builder.Services.AddSingleton<IBoardsRepository, BoardsInMemoryRepository>();
 
 var app = builder.Build();

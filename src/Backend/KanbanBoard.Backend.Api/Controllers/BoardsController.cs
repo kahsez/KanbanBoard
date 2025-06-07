@@ -6,7 +6,7 @@ namespace KanbanBoard.Backend.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BoardsController(GetBoards getBoards, CreateBoard createBoard, DeleteBoard deleteBoard) : ControllerBase
+public class BoardsController(GetBoards getBoards, CreateBoard createBoard, DeleteBoard deleteBoard, UpdateBoard updateBoard) : ControllerBase
 {
     [HttpGet]
     public async Task<IEnumerable<BoardResponse>> Get()
@@ -58,7 +58,7 @@ public class BoardsController(GetBoards getBoards, CreateBoard createBoard, Dele
         if (board == null)
             return NotFound();
 
-        var updatedBoard = new BoardResponse(id, data.Name);
+        var updatedBoard = await updateBoard.With(id, data);
         
         return updatedBoard;
     }
