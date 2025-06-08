@@ -1,5 +1,6 @@
 using KanbanBoard.Backend.Application.DrivenPorts;
 using KanbanBoard.Backend.Application.Dtos;
+using KanbanBoard.Backend.Application.Dtos.Mappers;
 
 namespace KanbanBoard.Backend.Application.UseCases;
 
@@ -13,7 +14,8 @@ public class UpdateBoard(IBoardsRepository boards)
             return null;
 
         existingBoard.Name = data.Name;
-        
-        return new BoardResponse(id, existingBoard.Name);
+        boards.Update(existingBoard);
+
+        return existingBoard.ToBoardResponse();
     }
 }

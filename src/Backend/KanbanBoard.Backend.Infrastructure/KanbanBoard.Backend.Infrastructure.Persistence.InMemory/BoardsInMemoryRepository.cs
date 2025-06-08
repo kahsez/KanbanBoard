@@ -28,6 +28,11 @@ public class BoardsInMemoryRepository : IBoardsRepository
         return Task.FromResult(boards.Find(b => b.Id == id));
     }
 
+    public void Update(Board board)
+    {
+
+    }
+
     public Task<int> Delete(int id)
     {
         return Task.FromResult(boards.RemoveAll(b => b.Id == id));
