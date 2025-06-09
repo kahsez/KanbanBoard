@@ -2,26 +2,34 @@
 'https://plantuml.com/deployment-diagram
 skin rose
 
-package "Domain" {
-    [Entities]
+skinparam package {
+  BackgroundColor white
 }
 
-package "Application" {
-    interface DrivenPorts
-    [Use Cases]
-    [DTOs]
-}
-
-rectangle "Infrastructure" {
-    package "Persistence.InMemory" {
-        [Repositories]
+rectangle "Domain Layer" #fcfdb9 {
+    package "Domain" {
+        [Entities]
     }
 }
 
-rectangle "Interface Adapters" {
+rectangle "Application Layer" #ffa09c {
+    package "Application" {
+        interface DrivenPorts
+        [Use Cases]
+        [DTOs]
+    }
+}
+
+rectangle "Interface Adapters Layer" #a2fdba {
     package "API" {
         [Controllers]
         [Program]
+    }
+}
+
+rectangle "Infrastructure Layer" #a7d7fd {
+    package "Persistence.InMemory" {
+        [Repositories]
     }
 }
 
