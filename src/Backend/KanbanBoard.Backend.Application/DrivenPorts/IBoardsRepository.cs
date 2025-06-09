@@ -7,6 +7,6 @@ public interface IBoardsRepository
     Task<Board> Create(Board board);
     Task<IEnumerable<Board>> GetAll();
     Task<Board?> GetById(int id);
-    Task Update(Board board);
+    Task<Board> Update(Board board);
     Task<int> Delete(int id);
 }

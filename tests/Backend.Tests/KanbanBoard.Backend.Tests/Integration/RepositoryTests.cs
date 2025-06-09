@@ -27,4 +27,20 @@ public class RepositoryTests
         var boards = await sut.GetAll();
         boards.Should().HaveCount(1).And.Contain(board => board.Name == "test");
     }
+
+    [Test]
+    public async Task UpdateWorksWithoutAliasing()
+    {
+        IBoardsRepository sut = new BoardsInMemoryRepository();
+        var original = await sut.Create(new Board("original"));
+        var copy = new Board("copy")
+        {
+            Id = original.Id
+        };
+
+        await sut.Update(copy);
+        
+        var boards = await sut.GetAll();
+        boards.Should().HaveCount(1).And.Contain(board => board.Name == "copy");
+    }
 }
