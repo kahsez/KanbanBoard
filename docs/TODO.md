@@ -1,16 +1,17 @@
 ### WIP
-- App
-  - Update Board
+- Test repository
 - Persistence
   - SQLite Database (Using EFCore)
   
 ### Test
 - Test Data Builder for client?
 - Separate boards tests in multiple classes?
+- Test helpers for update and delete tests
 
 ### Refactor
 - Move DI add services from program to somewhere else
 - Move Id generation to application layer?
+- Change int id to uuid
 
 ### Docs
 - Readme
