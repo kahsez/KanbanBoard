@@ -16,4 +16,15 @@ public class RepositoryTests
         
         createdBoard.Id.Should().NotBe(default);
     }
+
+    [Test]
+    public async Task UpdateNonExistingBoard_CreatesNewBoard()
+    {
+        IBoardsRepository sut = new BoardsInMemoryRepository();
+        
+        await sut.Update(new Board("test"));
+
+        var boards = await sut.GetAll();
+        boards.Should().HaveCount(1).And.Contain(board => board.Name == "test");
+    }
 }

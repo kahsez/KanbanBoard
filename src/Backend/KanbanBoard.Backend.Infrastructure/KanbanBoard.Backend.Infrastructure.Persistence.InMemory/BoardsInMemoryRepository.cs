@@ -28,9 +28,12 @@ public class BoardsInMemoryRepository : IBoardsRepository
         return Task.FromResult(boards.Find(b => b.Id == id));
     }
 
-    public void Update(Board board)
+    public async Task Update(Board board)
     {
-
+        if (await GetById(board.Id) == null)
+        {
+            await Create(board);
+        }
     }
 
     public Task<int> Delete(int id)
