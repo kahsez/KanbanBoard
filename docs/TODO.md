@@ -16,14 +16,8 @@
   - REST
   - Persistence (Multiple implementations)
   - Testing (integration, TDD)
-    - test helpers = test api = test utils
-  - Architecture (names used)
-    - Use Cases = Use Case Interactors = Application Services 
-    - Driven Ports = Secondary Ports = Use Case Output Ports
-    - Request DTO = Input Data
-    - Response DTO = Output Data
+  - Architecture
   - CI
-  - Conventional Commits
   - Decisions 
     - Number of controllers and use cases
     - No interface for driving ports
