@@ -126,14 +126,13 @@ public class BoardsTests
         var postedBoard = await sut.PostAndReadResponseContent<CreateBoardRequest, BoardResponse>(anyBoard, BoardsUri);
 
         var updateBoardRequest = new UpdateBoardRequest("newName");
-        var response = await sut.PutAsJsonAsync($"{BoardsUri}/{postedBoard.Id}", updateBoardRequest);
+        var updatedBoard = await sut.PutAndReadResponseContent<UpdateBoardRequest, BoardResponse>(updateBoardRequest,
+                $"{BoardsUri}/{postedBoard.Id}");
         
-        response.EnsureSuccessStatusCode();
-        var updatedBoard = await response.ReadContentAsyncAs<BoardResponse>();
         updatedBoard.Id.Should().Be(postedBoard.Id);
         updatedBoard.Name.Should().Be("newName");
     }
-    
+
     [Test]
     public async Task PutBoardPersistsUpdatedBoard()
     {

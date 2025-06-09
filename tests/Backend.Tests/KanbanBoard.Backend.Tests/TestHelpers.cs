@@ -32,4 +32,12 @@ public static class TestHelpers
         var result = await postResponse.ReadContentAsyncAs<TContentType>();
         return result;
     }
+    
+    public static async Task<TContentType> PutAndReadResponseContent<TRequestType, TContentType>
+        (this HttpClient client, TRequestType request, string requestUri)
+    {
+        var response = await client.PutAsJsonAsync(requestUri, request);
+        var result = await response.ReadContentAsyncAs<TContentType>();
+        return result;
+    }
 }
