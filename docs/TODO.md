@@ -1,12 +1,10 @@
 ### WIP
-- Test repository
 - Persistence
   - SQLite Database (Using EFCore)
   
 ### Test
 - Test Data Builder for client?
 - Separate boards tests in multiple classes?
-- Test helpers for update and delete tests
 
 ### Refactor
 - Move DI add services from program to somewhere else
