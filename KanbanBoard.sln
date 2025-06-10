@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanBoard.Backend.Applica
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanBoard.Backend.Infrastructure.Persistence.InMemory", "src\Backend\KanbanBoard.Backend.Infrastructure\KanbanBoard.Backend.Infrastructure.Persistence.InMemory\KanbanBoard.Backend.Infrastructure.Persistence.InMemory.csproj", "{C680B5A3-4C8A-498E-8AAE-0C63F3D481DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanBoard.Backend.Infrastructure.Persistence.EFCore", "src\Backend\KanbanBoard.Backend.Infrastructure\KanbanBoard.Backend.Infrastructure.Persistence.EFCore\KanbanBoard.Backend.Infrastructure.Persistence.EFCore.csproj", "{1BF6ADDB-6E26-4D9E-B2FD-4093B8205C5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{C680B5A3-4C8A-498E-8AAE-0C63F3D481DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C680B5A3-4C8A-498E-8AAE-0C63F3D481DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C680B5A3-4C8A-498E-8AAE-0C63F3D481DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BF6ADDB-6E26-4D9E-B2FD-4093B8205C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF6ADDB-6E26-4D9E-B2FD-4093B8205C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF6ADDB-6E26-4D9E-B2FD-4093B8205C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF6ADDB-6E26-4D9E-B2FD-4093B8205C5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
