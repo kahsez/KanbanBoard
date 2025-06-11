@@ -1,40 +1,54 @@
 ﻿using KanbanBoard.Backend.Application.DrivenPorts;
 using KanbanBoard.Backend.Domain;
+using KanbanBoard.Backend.Infrastructure.Persistence.EFCore;
 using KanbanBoard.Backend.Infrastructure.Persistence.InMemory;
+using Microsoft.FeatureManagement;
 
 namespace KanbanBoard.Backend.Infrastructure.Persistence.Proxy;
 
-public class BoardsProxyRepository : IBoardsRepository
+public class BoardsProxyRepository(IVariantFeatureManager featureManager) : IBoardsRepository
 {
-    private readonly IBoardsRepository repository;
+    private IBoardsRepository? repository;
 
-    public BoardsProxyRepository()
+    private async Task<IBoardsRepository> Repository()
     {
-        repository = new BoardsInMemoryRepository();
-    }
-    
-    public Task<Board> Create(Board board)
-    {
-        return repository.Create(board);
-    }
+        if (repository != null) return repository;
+        
+        var isEnabledEfCoreRepository = await featureManager.IsEnabledAsync("EFCoreRepository");
+        if (isEnabledEfCoreRepository)
+        {
+            repository = new BoardsEfCoreRepository();
+        }
+        else
+        {
+            repository = new BoardsInMemoryRepository();
+        }
 
-    public Task<IEnumerable<Board>> GetAll()
-    {
-        return repository.GetAll();
-    }
-
-    public Task<Board?> GetById(int id)
-    {
-        return repository.GetById(id);
+        return repository;
     }
 
-    public Task<Board> Update(Board board)
+    public async Task<Board> Create(Board board)
     {
-        return repository.Update(board);
+        return await (await Repository()).Create(board);
     }
 
-    public Task<int> Delete(int id)
+    public async Task<IEnumerable<Board>> GetAll()
     {
-        return repository.Delete(id);
+        return await (await Repository()).GetAll();
+    }
+
+    public async Task<Board?> GetById(int id)
+    {
+        return await (await Repository()).GetById(id);
+    }
+
+    public async Task<Board> Update(Board board)
+    {
+        return await (await Repository()).Update(board);
+    }
+
+    public async Task<int> Delete(int id)
+    {
+        return await (await Repository()).Delete(id);
     }
 }
