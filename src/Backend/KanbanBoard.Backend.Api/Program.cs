@@ -1,12 +1,13 @@
 using KanbanBoard.Backend.Application.DrivenPorts;
 using KanbanBoard.Backend.Application.UseCases;
-using KanbanBoard.Backend.Infrastructure.Persistence.InMemory;
 using KanbanBoard.Backend.Infrastructure.Persistence.Proxy;
+using Microsoft.FeatureManagement;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddFeatureManagement();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

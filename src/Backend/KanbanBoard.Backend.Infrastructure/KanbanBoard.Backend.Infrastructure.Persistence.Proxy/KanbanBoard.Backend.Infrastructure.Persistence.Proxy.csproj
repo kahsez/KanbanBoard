@@ -8,7 +8,14 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\KanbanBoard.Backend.Application\KanbanBoard.Backend.Application.csproj" />
+      <ProjectReference Include="..\KanbanBoard.Backend.Infrastructure.Persistence.EFCore\KanbanBoard.Backend.Infrastructure.Persistence.EFCore.csproj" />
       <ProjectReference Include="..\KanbanBoard.Backend.Infrastructure.Persistence.InMemory\KanbanBoard.Backend.Infrastructure.Persistence.InMemory.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.FeatureManagement">
+        <HintPath>..\..\..\..\..\..\.nuget\packages\microsoft.featuremanagement\4.1.0\lib\netstandard2.1\Microsoft.FeatureManagement.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>
