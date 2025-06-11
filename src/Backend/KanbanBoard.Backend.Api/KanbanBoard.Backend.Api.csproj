@@ -20,6 +20,7 @@
     <ItemGroup>
       <ProjectReference Include="..\KanbanBoard.Backend.Application\KanbanBoard.Backend.Application.csproj" />
       <ProjectReference Include="..\KanbanBoard.Backend.Infrastructure\KanbanBoard.Backend.Infrastructure.Persistence.InMemory\KanbanBoard.Backend.Infrastructure.Persistence.InMemory.csproj" />
+      <ProjectReference Include="..\KanbanBoard.Backend.Infrastructure\KanbanBoard.Backend.Infrastructure.Persistence.Proxy\KanbanBoard.Backend.Infrastructure.Persistence.Proxy.csproj" />
     </ItemGroup>
 
 </Project>

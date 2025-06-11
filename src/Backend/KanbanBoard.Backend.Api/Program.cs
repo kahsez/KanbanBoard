@@ -1,6 +1,7 @@
 using KanbanBoard.Backend.Application.DrivenPorts;
 using KanbanBoard.Backend.Application.UseCases;
 using KanbanBoard.Backend.Infrastructure.Persistence.InMemory;
+using KanbanBoard.Backend.Infrastructure.Persistence.Proxy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,7 @@ builder.Services.AddScoped<GetBoards>();
 builder.Services.AddScoped<CreateBoard>();
 builder.Services.AddScoped<DeleteBoard>();
 builder.Services.AddScoped<UpdateBoard>();
-builder.Services.AddSingleton<IBoardsRepository, BoardsInMemoryRepository>();
+builder.Services.AddSingleton<IBoardsRepository, BoardsProxyRepository>();
 
 var app = builder.Build();
 
