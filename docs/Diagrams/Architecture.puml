@@ -29,7 +29,13 @@ rectangle "Interface Adapters Layer" #a2fdba {
 
 rectangle "Infrastructure Layer" #a7d7fd {
     package "Persistence.InMemory" {
-        [Repositories]
+        [InMemory\nRepositories]
+    }
+    package "Persistence.EFCore" {
+            [EFCore\nRepositories]
+    }
+    package "Persistence.Proxy" {
+                [Proxy\nRepositories]
     }
 }
 
@@ -45,8 +51,10 @@ package "Tests" {
 [Controllers] ..> [DTOs] : send and receive
 
 ' Persistence implements abstractions defined in Domain/Application
-[Repositories] ..> [Entities] : use
-[Repositories] ..|> DrivenPorts : implement
+[Proxy\nRepositories] ..> [Entities] : use
+[Proxy\nRepositories] ..|> DrivenPorts : implement
+[Proxy\nRepositories] -u-> [InMemory\nRepositories] : delegate on
+[Proxy\nRepositories] -u-> [EFCore\nRepositories] : delegate on
 
 ' The Program (in API) wires up dependencies.
 '[Program] --> [DrivenPorts]

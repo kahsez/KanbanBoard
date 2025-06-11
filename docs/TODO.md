@@ -15,6 +15,7 @@
 - Readme
   - REST
   - Persistence (Multiple implementations)
+    - Proxy diagram and explanation
   - Testing (integration, TDD)
   - Architecture
   - CI
