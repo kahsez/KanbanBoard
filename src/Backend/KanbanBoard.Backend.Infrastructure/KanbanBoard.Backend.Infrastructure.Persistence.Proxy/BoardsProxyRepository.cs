@@ -15,14 +15,7 @@ public class BoardsProxyRepository(IVariantFeatureManager featureManager) : IBoa
         if (repository != null) return repository;
         
         var isEnabledEfCoreRepository = await featureManager.IsEnabledAsync("EFCoreRepository");
-        if (isEnabledEfCoreRepository)
-        {
-            repository = new BoardsEfCoreRepository();
-        }
-        else
-        {
-            repository = new BoardsInMemoryRepository();
-        }
+        repository = isEnabledEfCoreRepository ? new BoardsEfCoreRepository() : new BoardsInMemoryRepository();
 
         return repository;
     }
