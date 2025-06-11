@@ -14,7 +14,7 @@ public class UpdateBoard(IBoardsRepository boards)
             return null;
 
         existingBoard.Name = data.Name;
-        boards.Update(existingBoard);
+        await boards.Update(existingBoard);
 
         return existingBoard.ToBoardResponse();
     }

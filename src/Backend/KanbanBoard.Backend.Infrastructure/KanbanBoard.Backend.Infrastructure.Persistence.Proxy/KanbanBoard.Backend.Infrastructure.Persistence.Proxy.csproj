@@ -13,9 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="Microsoft.FeatureManagement">
-        <HintPath>..\..\..\..\..\..\.nuget\packages\microsoft.featuremanagement\4.1.0\lib\netstandard2.1\Microsoft.FeatureManagement.dll</HintPath>
-      </Reference>
+        <PackageReference Include="Microsoft.FeatureManagement" Version="4.1.0" />
     </ItemGroup>
 
 </Project>
