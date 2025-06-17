@@ -1,0 +1,62 @@
+@startuml
+
+skin rose
+
+interface IRepository {
+    +Create()
+    +Get()
+    +Update()
+    +Delete()
+}
+
+class InMemoryRepository {
+    +InMemoryRepository()
+    +Create()
+    +Get()
+    +Update()
+    +Delete()
+}
+class EfCoreRepository {
+    +EfCoreRepository()
+    +Create()
+    +Get()
+    +Update()
+    +Delete()
+}
+class ProxyRepository {
+    -IRepository repository
+    -IFeatureManager featureManager
+    -IRepository GetRepository()
+    +ProxyRepository(featureManager)
+    +Create()
+    +Get()
+    +Update()
+    +Delete()
+}
+
+note right of ProxyRepository::GetRepository
+    if (repository == null) {
+        if (featureManager.isEnabledEFCoreRepository) {
+            repository = new EfCoreRepository()
+        } else {
+            repository = new InMemoryRepository();
+        }
+    }
+    return repository;
+end note
+
+note right of ProxyRepository::Update
+    return GetRepository().Update();
+end note
+
+class UseCase
+
+UseCase -right-> IRepository
+
+InMemoryRepository .up.|> IRepository
+EfCoreRepository .up.|> IRepository
+ProxyRepository .up..|> IRepository
+
+ProxyRepository o--> IRepository
+
+@enduml

@@ -34,7 +34,14 @@ Currently only CRUD Board use cases are implemented
 
 ![Use Cases](docs/Diagrams/UseCases.svg)
 
+## Infrastructure
+
+### Persistence
+
+![Repository](docs/Diagrams/Repository.svg)
+
 ## Naming conventions
+
 - [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
 - Use cases
   - Name of the class is the name of the action
